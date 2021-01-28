@@ -17,6 +17,9 @@
   <include file="$(find jackal_control)/launch/teleop.launch">
     <arg name="joystick" value="$(arg joystick)" />
   </include>
+ <node pkg="tf" type="static_transform_publisher" name="jackal_1_world_tf" args="$(arg x) $(arg y) 0 0 0 0  world odom 100" />
+ <node pkg="tf" type="static_transform_publisher" name="jackal_1_laser_tf" args="0 0 0 0 0 0 base_laser jackal_1/base_laser 100" />
+<node pkg="tf" type="static_transform_publisher" name="jackal_1_pose_est_odom" args="$(arg x) $(arg y) 0 0 0 0 pose_est odom 100" />
 
   <!-- Spawn Jackal -->
   <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model"
